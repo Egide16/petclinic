@@ -192,12 +192,8 @@ jobs:
             ${{ env.VAULT_JFROG_PATH }} username | JF_USER ;
             ${{ env.VAULT_JFROG_PATH }} password | JF_PASSWORD
  
-      - name: Setup JFrog CLI
+      - name: Set up JFrog CLI
         uses: jfrog/setup-jfrog-cli@v4
         env:
-          JF_URL: ${{ env.JFROG_URL }}
-          JF_USER: ${{ env.JF_USER }}
-          JF_PASSWORD: ${{ env.JF_PASSWORD }}
- 
-      - name: Upload JAR to Artifactory
-        run: jf rt upload "target/*.jar" ${{ env.JFROG_REPO }}/
+          JF_URL: ${{ secrets.JFROG_URL }}
+          JF_ACCESS_TOKEN: ${{ secrets.JFROG_ACCESS_TOKEN }}
