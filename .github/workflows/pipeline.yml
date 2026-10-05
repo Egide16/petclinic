@@ -128,11 +128,11 @@ jobs:
           -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.qualitygate.wait=true
 
-            trivy-scan:
+  trivy-scan:
      name: Trivy Security Scan
-    runs-on: ubuntu-latest
-    needs: sonarqube-scan
-    steps:
+     runs-on: ubuntu-latest
+     needs: sonarqube-scan
+     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
